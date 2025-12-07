@@ -117,7 +117,7 @@ const Home = () => {
   ]
 
   return (
-    <div className="pt-20 overflow-hidden">
+    <div className="overflow-hidden">
       {/* Hero Section - Visionary Premium Experience */}
       <motion.section 
         style={{ opacity: heroOpacity }}

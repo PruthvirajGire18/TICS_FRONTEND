@@ -140,7 +140,7 @@ const Careers = () => {
   }
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section - Premium */}
       <section className="bg-gradient-to-br from-primary via-secondary to-primary text-white section-padding relative overflow-hidden">
         <div className="absolute inset-0 network-bg opacity-20"></div>
