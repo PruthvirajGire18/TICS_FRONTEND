@@ -53,7 +53,7 @@ const FAQ = () => {
   }
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-secondary to-primary text-white section-padding">
         <div className="container-custom text-center">

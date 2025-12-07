@@ -126,7 +126,7 @@ const Technologies = () => {
   const categories = ['All', 'Frontend', 'Backend', 'Database', 'Cloud', 'DevOps', 'Language', 'API']
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-secondary to-primary text-white section-padding relative overflow-hidden">
         <div className="absolute inset-0 network-bg opacity-20"></div>
