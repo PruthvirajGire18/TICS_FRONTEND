@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply antialiased;
+  }
+  
+  body {
+    @apply font-body;
+    color: #1A1F2E;
+    background: linear-gradient(180deg, #F5F8FF 0%, #FFFFFF 100%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism Button - Apple-level smooth */
+  .btn-primary {
+    @apply relative bg-gradient-primary text-white px-10 py-5 rounded-2xl font-semibold text-base;
+    @apply hover:shadow-glow-lg transition-all duration-500 transform hover:scale-[1.03] hover:-translate-y-0.5;
+    @apply backdrop-blur-md border;
+    border-color: rgba(255, 255, 255, 0.3);
+    @apply active:scale-[0.98];
+    box-shadow: 0 10px 40px rgba(0, 59, 164, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+  
+  /* Secondary Glass Button - Premium */
+  .btn-secondary {
+    @apply relative backdrop-blur-xl text-primary border-2;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(0, 59, 164, 0.4);
+    @apply px-10 py-5 rounded-2xl font-semibold text-base;
+    @apply transition-all duration-500;
+    @apply hover:shadow-glow transform hover:scale-[1.02] hover:-translate-y-0.5;
+    @apply active:scale-[0.98];
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(0, 59, 164, 0.6);
+  }
+  
+  /* Glass Card - SpaceX-style depth */
+  .glass-card {
+    @apply backdrop-blur-2xl rounded-3xl border;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.35);
+    @apply shadow-premium hover:shadow-premium-lg transition-all duration-700;
+    @apply hover:-translate-y-2;
+    @apply relative overflow-hidden;
+  }
+  
+  .glass-card:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-700;
+    background: linear-gradient(135deg, rgba(0, 255, 196, 0.1) 0%, transparent 100%);
+  }
+  
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Premium Section Padding */
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+  
+  /* Glow Effect */
+  .glow-effect {
+    @apply relative;
+  }
+  
+  .glow-effect::after {
+    content: '';
+    @apply absolute inset-0 rounded-3xl blur-3xl opacity-40;
+    background: radial-gradient(circle, rgba(0, 162, 255, 0.6) 0%, transparent 70%);
+    z-index: -1;
+    animation: glow-accent 3s ease-in-out infinite alternate;
+  }
+  
+  /* Premium Text Gradient */
+  .gradient-text-accent {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+  
+  /* Network Wave Background */
+  .network-bg {
+    background-image: 
+      radial-gradient(circle, rgba(0, 255, 196, 0.15) 1px, transparent 1px),
+      radial-gradient(circle, rgba(0, 162, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 100px 100px;
+    background-position: 0 0, 25px 25px;
+    animation: wave 20s linear infinite;
+  }
+  
+  /* 3D Card Effect */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-3d:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+  }
+}
+
