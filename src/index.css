@@ -10,7 +10,7 @@
   body {
     @apply font-body;
     color: #1A1F2E;
-    background: linear-gradient(180deg, #F5F8FF 0%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #003BA4 0%, #001F52 100%);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -64,15 +64,15 @@
   /* Glass Card - SpaceX-style depth */
   .glass-card {
     @apply backdrop-blur-2xl rounded-3xl border;
-    background-color: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, rgba(0, 59, 164, 0.4) 0%, rgba(0, 162, 255, 0.35) 100%);
+    border-color: rgba(255, 255, 255, 0.3);
     @apply shadow-premium hover:shadow-premium-lg transition-all duration-700;
     @apply hover:-translate-y-2;
     @apply relative overflow-hidden;
   }
   
   .glass-card:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(0, 59, 164, 0.5) 0%, rgba(0, 162, 255, 0.45) 100%);
     border-color: rgba(255, 255, 255, 0.5);
   }
   

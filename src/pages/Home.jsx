@@ -11,7 +11,7 @@ const Home = () => {
   const { scrollY } = useScroll()
   const heroY = useTransform(scrollY, [0, 500], [0, 150])
   // Keep hero visible longer - fade to 0.5 instead of 0, and extend scroll range
-  const heroOpacity = useTransform(scrollY, [0, 600], [1, 0.5])
+  const heroOpacity = useTransform(scrollY, [0, 600], [1, 0.8])
   // Stats should stay visible even when hero fades
   const statsOpacity = useTransform(scrollY, [0, 600], [1, 1])
 
@@ -282,11 +282,11 @@ const Home = () => {
       </motion.section>
 
       {/* Transition Spacer - ensures smooth visibility between sections */}
-      <div className="h-10 bg-white relative z-20"></div>
+      <div className="h-10 bg-gradient-to-b from-primary via-secondary to-primary relative z-20"></div>
 
       {/* Why Choose Us - Premium Glass Cards */}
-      <section className="section-padding relative bg-white -mt-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-cloud-white/50 via-white to-cloud-white/50"></div>
+      <section className="section-padding relative bg-gradient-to-b from-primary via-secondary to-primary -mt-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-secondary/80 to-primary/80"></div>
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -294,10 +294,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-6xl md:text-7xl font-heading font-black mb-6 text-cloud-dark">
+            <h2 className="text-6xl md:text-7xl font-heading font-black mb-6 text-white">
               Why Choose <span className="gradient-text-accent">TICS</span>?
             </h2>
-            <p className="text-2xl text-cloud-dark/80 max-w-3xl mx-auto font-light">
+            <p className="text-2xl text-white/90 max-w-3xl mx-auto font-light">
               Excellence through innovation, expertise, and unwavering dedication
             </p>
           </motion.div>
@@ -322,10 +322,10 @@ const Home = () => {
                   >
                     <Icon className={`text-4xl ${usp.color}`} />
                   </motion.div>
-                  <h3 className="text-2xl font-heading font-bold mb-4 text-cloud-dark group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-heading font-bold mb-4 text-white group-hover:text-accent transition-colors">
                     {usp.title}
                   </h3>
-                  <p className="text-cloud-dark/90 leading-relaxed font-medium">{usp.desc}</p>
+                  <p className="text-white/90 leading-relaxed font-medium">{usp.desc}</p>
                   <div className="mt-6 h-1 w-0 bg-gradient-accent group-hover:w-full transition-all duration-700 rounded-full"></div>
                 </motion.div>
               )
