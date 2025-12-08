@@ -8,11 +8,19 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 
 // Warn if API URL is not set in production
 if (import.meta.env.PROD && !import.meta.env.VITE_API_URL) {
-  console.error('⚠️ VITE_API_URL is not set!')
+  console.error('❌ VITE_API_URL is not set in production!')
   console.error('   Please set it in Netlify:')
   console.error('   1. Go to Site settings > Build & deploy > Environment variables')
-  console.error('   2. Add: VITE_API_URL = https://your-backend-url.com/api')
+  console.error('   2. Add: VITE_API_URL = https://your-backend-url.onrender.com/api')
+  console.error('      (Replace with your actual deployed backend URL)')
   console.error('   3. Redeploy your site')
+}
+
+// Warn if using localhost in production
+if (import.meta.env.PROD && API_URL.includes('localhost')) {
+  console.warn('⚠️ You are using localhost API URL in production!')
+  console.warn('   This will not work. Please set VITE_API_URL to your deployed backend URL.')
+  console.warn('   Example: https://tics-backend.onrender.com/api')
 }
 
 const api = axios.create({
@@ -30,10 +38,23 @@ api.interceptors.response.use(
     if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
       console.error('❌ Network Error: Cannot connect to backend API')
       console.error('   Current API URL:', API_URL)
-      if (import.meta.env.PROD && API_URL.includes('localhost')) {
-        console.error('   ⚠️ You are using localhost in production!')
-        console.error('   Please set VITE_API_URL in Netlify environment variables')
+      if (import.meta.env.PROD) {
+        if (API_URL.includes('localhost')) {
+          console.error('   ⚠️ You are using localhost in production!')
+          console.error('   This will not work. Please:')
+          console.error('   1. Deploy your backend to Render/Railway/etc')
+          console.error('   2. Set VITE_API_URL in Netlify environment variables')
+          console.error('   3. Redeploy your frontend')
+        } else {
+          console.error('   ⚠️ Backend might be down or CORS is not configured correctly')
+          console.error('   Check if your backend is deployed and running')
+          console.error('   Verify CORS settings allow:', window.location.origin)
+        }
       }
+    } else if (error.response?.status === 0 || error.code === 'ERR_CORS') {
+      console.error('❌ CORS Error: Backend is blocking this origin')
+      console.error('   Make sure backend CORS allows:', window.location.origin)
+      console.error('   Backend should allow:', 'https://ticss.netlify.app')
     }
     return Promise.reject(error)
   }
